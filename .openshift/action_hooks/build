@@ -1,6 +1,8 @@
 #!/bin/bash
 ROOT=$OPENSHIFT_DATA_DIR
-SONAR_VERSION=4.1.1
+
+# No 4.1.1 available for download in the new page, using 4.1.2 then
+SONAR_VERSION=4.1.2
 
 if [[ $OPENSHIFT_POSTGRESQL_DB_URL ]]
 then
@@ -9,7 +11,8 @@ fi
 
 cd $ROOT
 
-wget http://dist.sonar.codehaus.org/sonarqube-$SONAR_VERSION.zip
+# Previous base URL, http://dist.sonar.codehaus.org, not reachable anymore
+wget http://downloads.sonarsource.com/sonarqube/sonarqube-$SONAR_VERSION.zip
 unzip sonarqube-$SONAR_VERSION.zip
 rm -Rf sonarqube sonarqube-$SONAR_VERSION.zip
 mv sonarqube-$SONAR_VERSION sonarqube
